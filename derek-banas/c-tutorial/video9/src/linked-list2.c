@@ -3,9 +3,11 @@
 #include <stdbool.h>
 #include <string.h>
 
+#define NAME_LEN 30
+
 typedef struct Product {
     float price;
-    char name[20];
+    char name[NAME_LEN];
     struct Product * next;
 } Product;
 
@@ -81,7 +83,9 @@ Product * search_by_name(char name[])
 {
     Product * curr = first; // Current
     while (curr != NULL) {
-        bool is_found = strcmp(curr->name, name) == 0;
+        // strncmp => String Compare that returns 0, negative or positive as
+        // result of comparing n characters
+        bool is_found = strncmp(curr->name, name, NAME_LEN) == 0;
         if (is_found) return curr;
         curr = curr->next;
     }
@@ -112,7 +116,7 @@ int main()
     print_list();
 
     // Search a product by name
-    char prod_name[20];
+    char prod_name[NAME_LEN];
     printf("\nEnter the product name to search: ");
     scanf("%s", &prod_name);
 
