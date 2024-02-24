@@ -22,3 +22,8 @@ Paddle paddle_update(Paddle p, Window win, float y_speed)
         return paddle_new(p.x, p.y, p.height, p.width, p.color);
     }
 }
+
+Rectangle paddle_get_rec(Paddle p)
+{
+    return (Rectangle) { .x = p.x, .y = p.y, .width = p.width, .height = p.height };
+}

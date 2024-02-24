@@ -13,7 +13,8 @@ void ball_draw(Ball ball)
     DrawCircleV(center, ball.radius, ball.color);
 }
 
-Ball ball_update(Ball ball, Window win)
+// bool CheckCollisionCircleRec(Vector2 center, float radius, Rectangle rec)
+Ball ball_update(Ball ball, Window win, Rectangle lpad_rec, Rectangle rpad_rec)
 {
     bool wall_collision_x = ball.x + ball.radius >= win.width || ball.x - ball.radius <= 0;
     if (wall_collision_x) {
@@ -25,9 +26,26 @@ Ball ball_update(Ball ball, Window win)
 	ball.y_speed *= -1;
     }
 
+    bool lpad_collision = CheckCollisionCircleRec(ball_get_center(ball), ball.radius, lpad_rec);
+    if (lpad_collision) {
+        ball.color = RED;
+        ball.x_speed *= -1;
+    }
+
+    bool rpad_collision = CheckCollisionCircleRec(ball_get_center(ball), ball.radius, rpad_rec);
+    if (rpad_collision) {
+        ball.color = BLUE;
+        ball.x_speed *= -1;
+    }
+
     // Move the ball
     ball.x += ball.x_speed;
     ball.y += ball.y_speed;
 
     return ball;
+}
+
+Vector2 ball_get_center(Ball ball)
+{
+    return (Vector2) { .x = ball.x, .y = ball.y };
 }

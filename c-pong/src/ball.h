@@ -17,6 +17,7 @@ typedef struct {
 
 Ball ball_new(float x, float y, float radius, Color color);
 void ball_draw(Ball ball);
-Ball ball_update(Ball ball, Window win);
+Ball ball_update(Ball ball, Window win, Rectangle lpad_rec, Rectangle rpad_rec);
+Vector2 ball_get_center(Ball ball);
 
 #endif

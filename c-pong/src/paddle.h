@@ -16,5 +16,6 @@ typedef struct {
 Paddle paddle_new(float x, float y, float height, float width, Color color);
 void paddle_draw(Paddle p);
 Paddle paddle_update(Paddle p, Window win, float y_speed);
+Rectangle paddle_get_rec(Paddle p);
 
 #endif

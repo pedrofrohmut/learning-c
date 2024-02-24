@@ -32,7 +32,7 @@ int main()
         if (IsKeyDown(KEY_K)) rpad = paddle_update(rpad, win, -7);
         if (IsKeyDown(KEY_J)) rpad = paddle_update(rpad, win, 7);
 
-        ball = ball_update(ball, win);
+        ball = ball_update(ball, win, paddle_get_rec(lpad), paddle_get_rec(rpad));
 
         BeginDrawing();
         ClearBackground(BLACK);
