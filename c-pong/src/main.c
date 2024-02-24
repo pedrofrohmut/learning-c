@@ -24,6 +24,14 @@ int main()
     while (!WindowShouldClose()) {
         if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_Q)) break; // C-q
 
+        app_check_keys();
+
+        if (IsKeyDown(KEY_D)) lpad = paddle_update(lpad, win, -7);
+        if (IsKeyDown(KEY_F)) lpad = paddle_update(lpad, win, 7);
+
+        if (IsKeyDown(KEY_K)) rpad = paddle_update(rpad, win, -7);
+        if (IsKeyDown(KEY_J)) rpad = paddle_update(rpad, win, 7);
+
         ball = ball_update(ball, win);
 
         BeginDrawing();

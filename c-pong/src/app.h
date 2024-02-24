@@ -7,5 +7,6 @@ typedef struct {
 } Window;
 
 void app_draw_mid_line(Window win);
+void app_check_keys();
 
 #endif
